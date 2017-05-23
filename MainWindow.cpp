@@ -89,7 +89,7 @@ void MainWindow::createWid()
 {
     foreach(QString val, m_mapResourceAlias.keys())
     {
-        if(val.contains(QString("PXI24::12::INSTR")))
+        if(val.contains(QString("PXI24::11::INSTR")))//NOTE::ÓÐ±ä¸ü
         {
             m_layout->addWidget(new ASL232(val,s_DefaultRM,this));
         }
