@@ -4,6 +4,7 @@
 #include "ui_MainWindow.h"
 #include "QtResource.h"
 #include "ASL232.h"
+#include "ASL422.h"
 #include <QMap>
 
 class MainWindow : public QMainWindow

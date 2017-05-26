@@ -74,7 +74,7 @@ ViStatus _VI_FUNC  NT_H1040_RS422_ChannelEnable(ViSession vi,short channel,unsig
 ViStatus _VI_FUNC  NT_H1040_RS485_RelayConfig(ViSession vi,int channelStatus) ;  
 
 
-ViStatus _VI_FUNC  NT_H1040_RS422_SendString(ViSession vi,short channel, short length ,unsigned int * pValue,unsigned int *pActualLength) ;
+ViStatus _VI_FUNC  NT_H1040_RS422_SendString(ViSession vi,short channel, short length ,unsigned char * pValue,unsigned int *pActualLength) ;
 ViStatus _VI_FUNC  NT_H1040_RS422_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength,float *timeLab) ;
 ViStatus _VI_FUNC  NT_H1040_RS422_DataFormatConfig(ViSession vi,short channel ,unsigned long baudrate,int wordlength,int parity,int stopBit); 
 

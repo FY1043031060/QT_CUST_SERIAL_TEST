@@ -93,5 +93,9 @@ void MainWindow::createWid()
         {
             m_layout->addWidget(new ASL232(val,s_DefaultRM,this));
         }
+        if(val.contains(QString("PXI24::13::INSTR")))
+        {
+            m_layout->addWidget(new ASL422(val,s_DefaultRM,this));
+        }
     }
 }
