@@ -2,7 +2,7 @@
 #include "Function422.h"
 #include <QStringList>
 #include <QDebug>
-
+#include <QTime>
 
 ASL232::ASL232(QString strDevice, ViSession viResourceRM, QWidget *parent)
     : QtResource(strDevice, viResourceRM, parent)
@@ -56,7 +56,7 @@ ASL232::~ASL232()
 
 void ASL232::initCompoent()
 {
-    m_recvTiemr.start(1);
+    m_recvTiemr.start(0);
     QStringList arrChannel;
     for(int index = 0; index < 18; index ++)
     {
@@ -123,6 +123,7 @@ void ASL232::initCompoent()
 
         if(iActLength > 0)
         {
+            qDebug() << __FUNCTION__ <<"Recv Time:" << QTime::currentTime() << "end";
             qDebug() << __FUNCTION__ << QStringLiteral("#实际接收数据量#:") << iActLength;
 
             QString temp;
@@ -204,7 +205,9 @@ void ASL232::sendFixData()
     for(int index = 0; index < ARRAY_SIZE; index++)
         arr[index] = 9;
 
+    qDebug() << __FUNCTION__ <<"Send FixData Time:" << QTime::currentTime() << "start";
     sendRS232Data(channel, ARRAY_SIZE, (unsigned char*)arr, &tempAct);
+    qDebug() << __FUNCTION__ <<"Send FixData Time:" << QTime::currentTime() << "end";
     int temp = ui.labelSendLength->text().toInt();
     ui.labelSendLength->setText(QString("%1").arg(tempAct + temp));
     qDebug() << __FUNCTION__ << QStringLiteral("实际发送数据量:") << tempAct;
@@ -230,7 +233,9 @@ void ASL232::sendCustData()
         arrTemp[index] &= 0x000000FF;
     }
     //发送数据
+    qDebug() << __FUNCTION__ <<"Send CustData Time:" << QTime::currentTime() << "start";
     sendRS232Data(channel, arrData.size(), (unsigned char*)arrData.data(), &tempAct);
+    qDebug() << __FUNCTION__ <<"Send CustData Time:" << QTime::currentTime() << "end";
     //界面显示发送信息
     int temp = ui.labelSendLength->text().toInt();
     ui.labelSendLength->setText(QString("%1").arg(tempAct + temp));
