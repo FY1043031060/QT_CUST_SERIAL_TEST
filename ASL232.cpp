@@ -8,6 +8,7 @@ ASL232::ASL232(QString strDevice, ViSession viResourceRM, QWidget *parent)
     : QtResource(strDevice, viResourceRM, parent)
 {
     ui.setupUi(this);
+    ui.labelDevName->setText(QStringLiteral("´®¿Ú232"));
     initRS232();
     initCompoent();
 }

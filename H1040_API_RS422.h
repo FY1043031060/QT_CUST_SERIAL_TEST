@@ -34,13 +34,13 @@ NENGTONG_API ViStatus _VI_FUNC  NT_H1040_RS485_RelayConfig(ViSession vi,int chan
 
 
 NENGTONG_API ViStatus _VI_FUNC  NT_H1040_RS422_SendString(ViSession vi,short channel, short length ,unsigned char * pValue,unsigned int *pActualLength) ;
-NENGTONG_API ViStatus _VI_FUNC  NT_H1040_RS422_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength) ;
+NENGTONG_API ViStatus _VI_FUNC  NT_H1040_RS422_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength,float *timeLab) ;
 NENGTONG_API ViStatus _VI_FUNC  NT_H1040_RS422_DataFormatConfig(ViSession vi,short channel ,unsigned long baudrate,int wordlength,int parity,int stopBit); 
 
 
 NENGTONG_API ViStatus _VI_FUNC  NT_H1040_RS232_DataFormatConfig(ViSession vi,short channel ,unsigned long baudrate,short wordlength,short parity,int stopBit); 
 NENGTONG_API ViStatus _VI_FUNC  NT_H1040_RS232_SendString(ViSession vi,short channel, short length ,unsigned char * pValue,unsigned int *pActualLength) ;
-NENGTONG_API ViStatus _VI_FUNC  NT_H1040_RS232_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength) ;
+NENGTONG_API ViStatus _VI_FUNC  NT_H1040_RS232_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength,float *timeLab) ;
 
 
 

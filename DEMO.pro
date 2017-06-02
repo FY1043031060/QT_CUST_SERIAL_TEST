@@ -24,7 +24,7 @@ CONFIG += C++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 LIBS += -L$$PWD/ -lAPI_RS422_485_232
-LIBS += -l$$PWD/ -lH1040_API_RS422
+LIBS += -L$$PWD/ -lH1040_API_RS422
 LIBS += -L$$PWD/ -lvisa32
 LIBS += -L$$PWD/ -livi
 

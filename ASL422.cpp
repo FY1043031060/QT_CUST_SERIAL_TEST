@@ -8,13 +8,15 @@ ASL422::ASL422(QString strDevice, ViSession viResourceRM, QWidget *parent)
     : QtResource(strDevice, viResourceRM, parent)
 {
     ui.setupUi(this);
+    ui.labelDevName->setText(QStringLiteral("串口422"));
     initRS422();
     initCompoent();
     //配置默认为422模式
-//    for(int index = 0;index<m_iChannelNum;index++)
-//    {
-//        switch485VS422(index,RS422MODE);
-//    }
+   //for(int index = 0;index<m_iChannelNum;index++)
+   //{
+   //    switch485VS422(index,RS422MODE);
+   //}
+	switch485VS422(0,RS422MODE);
 }
 
 int ASL422::initRS422()
@@ -40,15 +42,14 @@ int ASL422::configRS422Format(short channel, unsigned long baudrate, int wordlen
 
 int ASL422::sendRS422Data(short channel, short length, unsigned char *pValue, unsigned int *pActualLength)
 {
-    int status = NT_H1040_RS422_SendString(m_session, channel,  length ,   pValue,  pActualLength);
+    int status = NT_H1040_RS422_SendString(m_session, channel,  length,  pValue,  pActualLength);
     qDebug() << __FUNCTION__ << "status" << status << "ActualLength" << *pActualLength;
     return status;
 }
 
 int ASL422::recvRS422Data(short channel, short length, unsigned char *pValue,  int *pActalLength, float *timeLab)
 {
-    int status = NT_H1040_RS422_GetString(m_session, channel, length, pValue, pActalLength) ;
-    timeLab = 0;
+    int status = NT_H1040_RS422_GetString(m_session, channel, length, pValue, pActalLength, timeLab) ;
     if(*pActalLength > 0)
         qDebug() << __FUNCTION__ << status << *pActalLength;
     return status;
@@ -62,8 +63,8 @@ ASL422::~ASL422()
 
 int ASL422::switch485VS422(int channel, ASL422::RELAY_CONFIG eMode)
 {
-//    return NT_H1040_RS485_RelayConfig(m_session,channel,eMode) ;
-    return 0;
+    return NT_H1040_RS485_RelayConfig(m_session,eMode) ;
+
 }
 
 void ASL422::initCompoent()
