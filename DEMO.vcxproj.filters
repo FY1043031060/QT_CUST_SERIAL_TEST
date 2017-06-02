@@ -36,20 +36,17 @@
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{646ea00b-3dda-45de-8dba-8fa07475ee5a}</UniqueIdentifier>
+      <UniqueIdentifier>{4a092cbd-8597-4e14-99a1-0d5cc284c9f6}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{c8ad8637-fb70-464d-8e5e-721bfe63bb78}</UniqueIdentifier>
+      <UniqueIdentifier>{27d0094c-a052-4fff-a54e-be6953df9669}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ASL232.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ASL422.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,15 +79,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ASL232.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="ASL422.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="Function422.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="H1040_API_RS422.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -100,12 +91,6 @@
     <CustomBuild Include="QtResource.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="GeneratedFiles\ui_ASL232.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -122,5 +107,13 @@
     <CustomBuild Include="MainWindow.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_ASL232.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
