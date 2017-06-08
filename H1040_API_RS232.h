@@ -1,6 +1,6 @@
 //==============================================================================
 //
-// Title:		Function429.h
+// Title:		Function232.h
 // Purpose:		A short description of the interface.
 //
 // Created on:	2016/9/14 at 15:04:14 by USER-.
@@ -8,8 +8,8 @@
 //
 //==============================================================================
 
-#ifndef __Function422_H__
-#define __Function422_H__
+#ifndef __H1040_API_RS232_H__
+#define __H1040_API_RS232_H__
 
 #ifdef __cplusplus
     extern "C" {
@@ -26,16 +26,16 @@
 
 //==============================================================================
 // Types
-//ViSession devSession;
+ViSession devSession;
 
-/*
+
 #define DLL_API_EXPORT
 #ifdef DLL_API_EXPORT
 #define NENGTONG_API    __declspec(dllexport)
 #else
 #define NENGTONG_API    __declspec(dllimport)
 #endif	
-*/
+
 //==============================================================================
 // External variables
 
@@ -74,14 +74,14 @@ ViStatus _VI_FUNC  NT_H1040_RS422_ChannelEnable(ViSession vi,short channel,unsig
 ViStatus _VI_FUNC  NT_H1040_RS485_RelayConfig(ViSession vi,int channelStatus) ;  
 
 
-ViStatus _VI_FUNC  NT_H1040_RS422_SendString(ViSession vi,short channel, short length ,unsigned char * pValue,unsigned int *pActualLength) ;
+ViStatus _VI_FUNC  NT_H1040_RS422_SendString(ViSession vi,short channel, short length ,unsigned int * pValue,unsigned int *pActualLength) ;
 ViStatus _VI_FUNC  NT_H1040_RS422_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength,float *timeLab) ;
 ViStatus _VI_FUNC  NT_H1040_RS422_DataFormatConfig(ViSession vi,short channel ,unsigned long baudrate,int wordlength,int parity,int stopBit); 
 
 
- ViStatus _VI_FUNC  NT_H1040_RS232_DataFormatConfig(ViSession vi,short channel ,unsigned long baudrate,short wordlength,short parity,int stopBit); 
- ViStatus _VI_FUNC  NT_H1040_RS232_SendString(ViSession vi,short channel, short length ,unsigned char * pValue,unsigned int *pActualLength) ;
- ViStatus _VI_FUNC  NT_H1040_RS232_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength,float *timeLab) ;
+ViStatus _VI_FUNC  NT_H1040_RS232_DataFormatConfig(ViSession vi,short channel ,unsigned long baudrate,short wordlength,short parity,int stopBit); 
+ViStatus _VI_FUNC  NT_H1040_RS232_SendString(ViSession vi,short channel, short length ,unsigned char * pValue,unsigned int *pActualLength) ;
+ViStatus _VI_FUNC  NT_H1040_RS232_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength,float *timeLab) ;
 
 
 ViStatus _VI_FUNC NT_H1040_GetID(ViSession vi);
