@@ -17,8 +17,8 @@ public:
     ~ASL422();
 
     int configRS422Format(short channelNum ,unsigned long baudrate,int wordlength,int parity,int stopBit);
-    int sendRS422Data(short channelNum, short length ,unsigned char * pValue,unsigned int *pActualLength);
-    int recvRS422Data(short channelNum,short length, unsigned char * pValue, int *pActalLength,float *timeLab);
+    int sendRS422Data(short channelNum, short length ,unsigned char * pValue, unsigned int *pActualLength);
+    int recvRS422Data(short channelNum, short length, unsigned char * pValue, int *pActalLength,float *timeLab);
     int switch485VS422(int channel,RELAY_CONFIG eMode);
 private:
     int initRS422();

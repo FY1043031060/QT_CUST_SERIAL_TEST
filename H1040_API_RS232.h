@@ -26,7 +26,7 @@
 
 //==============================================================================
 // Types
-ViSession devSession;
+//ViSession devSession;
 
 
 #define DLL_API_EXPORT

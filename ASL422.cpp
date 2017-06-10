@@ -9,6 +9,7 @@ ASL422::ASL422(QString strDevice, ViSession viResourceRM, QWidget *parent)
 {
 	ui.setupUi(this);
 	ui.labelDevName->setText(QStringLiteral("串口422"));
+    this->setObjectName(QStringLiteral("ASL422"));
 	initRS422();
 	initCompoent();
 	//配置默认为422模式

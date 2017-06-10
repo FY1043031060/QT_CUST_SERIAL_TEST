@@ -1,5 +1,5 @@
 #include "ASL232.h"
-#include "Function422.h"
+#include "H1040_API_RS232.h"
 #include <QStringList>
 #include <QDebug>
 #include <QTime>
@@ -9,6 +9,7 @@ ASL232::ASL232(QString strDevice, ViSession viResourceRM, QWidget *parent)
 {
     ui.setupUi(this);
     ui.labelDevName->setText(QStringLiteral("串口232"));
+    this->setObjectName(QStringLiteral("ASL232"));
     initRS232();
     initCompoent();
 }
@@ -156,11 +157,12 @@ void ASL232::initCompoent()
         }
 
     });
+    ////超时发数
     connect(&m_sendTimer, &QTimer::timeout, [&]()
     {
-
         this->sendData();
     });
+    ////计数数据清零
     connect(ui.pushButtonClear, &QPushButton::clicked, [&]()
     {
         ui.labelRecvLength->setText("0");
