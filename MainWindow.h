@@ -7,6 +7,7 @@
 #include "ASL232.h"
 #include "ASL422.h"
 #include <QMap>
+#include "CAN.h"
 
 class MainWindow : public QMainWindow
 {

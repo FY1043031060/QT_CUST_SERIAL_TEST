@@ -8,7 +8,7 @@ class QtResource : public QWidget
 {
     Q_OBJECT
 public:
-    explicit QtResource(QString strDevice, ViSession viResourceRM, QWidget *parent = Q_NULLPTR);
+    explicit QtResource(QString strDevice, ViSession viResourceRM, QWidget *parent = nullptr);
     ~QtResource();
 signals:
 

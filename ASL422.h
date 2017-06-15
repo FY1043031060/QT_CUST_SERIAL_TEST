@@ -13,7 +13,7 @@ public:
         RS485MODE = 1
     };
 
-    explicit ASL422(QString strDevice, ViSession viResourceRM, QWidget *parent = Q_NULLPTR);
+    explicit ASL422(QString strDevice, ViSession viResourceRM, QWidget *parent = nullptr);
     ~ASL422();
 
     int configRS422Format(short channelNum ,unsigned long baudrate,int wordlength,int parity,int stopBit);

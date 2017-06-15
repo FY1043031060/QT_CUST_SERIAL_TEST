@@ -39,7 +39,7 @@ int MainWindow::scanForResources()
     ViUInt32 retCnt;
     //根据默认资源管理器获取资源描述符
     status = viFindRsrc(s_DefaultRM,
-                        m_hostName.trimmed().toLatin1().data(),
+                        m_hostName.trimmed().toUtf8().data(),
                         &session,
                         &retCnt,
                         strDesc);
@@ -94,11 +94,14 @@ void MainWindow::createWid()
         {
             m_layout->addWidget(new ASL232(val,s_DefaultRM,this));
         }
-        else if(val.contains(QString("PXI55::13::INSTR")))//NOTE::422
+        else if(val.contains(QString("PXI25::11::INSTR")))//NOTE::422
         {
             m_layout->addWidget(new ASL422(val,s_DefaultRM,this));
         }
+
     }
+////NOTE:: access CAN1 and CAN2 with RPC server.
+//    m_layout->addWidget(new CAN(this));
 }
 
 #include <QTimer>

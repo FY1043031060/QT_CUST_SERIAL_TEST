@@ -5,7 +5,7 @@ QtResource::QtResource(QString strDevice, ViSession viResourceRM, QWidget *paren
     :QWidget(parent), m_strDev(strDevice)
 {
     ViStatus status = viOpen(viResourceRM,
-                             strDevice.trimmed().toLatin1().data(),
+                             strDevice.trimmed().toUtf8().data(),
                              VI_NULL,
                              VI_NULL,
                              &m_session);
