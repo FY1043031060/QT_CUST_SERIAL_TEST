@@ -3,6 +3,7 @@
 #include <QStringList>
 #include <QDebug>
 #include <QTime>
+#include "Helper.h"
 
 ASL422::ASL422(QString strDevice, ViSession viResourceRM, QWidget *parent)
 	: QtResource(strDevice, viResourceRM, parent)
@@ -22,14 +23,14 @@ ASL422::ASL422(QString strDevice, ViSession viResourceRM, QWidget *parent)
 
 int ASL422::initRS422()
 {
-	int status = NT_H1040_Rs422Init(m_session);
+    int status = NT_H1040_Rs422Init(m_session, Helper::getInstance().getASL422RemoteType());
 	qDebug() << __FUNCTION__ << status;
 	return status;
 }
 
 int ASL422::uninitRS422()
 {
-	int status = NT_H1040_Rs422UnInit(m_session);
+    int status = NT_H1040_Rs422UnInit(m_session, Helper::getInstance().getASL422RemoteType());
 	qDebug() << __FUNCTION__ << status;
 	return status;
 }
@@ -48,7 +49,7 @@ int ASL422::sendRS422Data(short channel, short length, unsigned char *pValue, un
 	return status;
 }
 
-int ASL422::recvRS422Data(short channel, short length, unsigned char *pValue, int *pActalLength, float *timeLab)
+int ASL422::recvRS422Data(short channel, short length, unsigned char *pValue, int *pActalLength, double *timeLab)
 {
 	int status = NT_H1040_RS422_GetString(m_session, channel, length, pValue, pActalLength, timeLab);
 	if (*pActalLength > 0)
@@ -69,7 +70,7 @@ int ASL422::switch485VS422(int channel, ASL422::RELAY_CONFIG eMode)
 
 void ASL422::initCompoent()
 {
-	m_recvTiemr.start(0);
+    m_recvTiemr.start(100);
 	QStringList arrChannel;
 	for (int index = 0; index < 8; index++)
 	{
@@ -130,7 +131,7 @@ void ASL422::initCompoent()
 		memset(arrTemp, 0, 1000);
 
 		int iActLength = 0;
-		float ftimeLab = 0.0;
+        double ftimeLab = 0.0;
 		recvRS422Data(channel, 1000, arrTemp, &iActLength, &ftimeLab);
 
 		if (iActLength > 0)

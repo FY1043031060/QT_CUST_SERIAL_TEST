@@ -11,7 +11,7 @@ public:
     int uninitRS232();
     int configRS232Format(short channelNum ,unsigned long baudrate,int wordlength,int parity,int stopBit);
     int sendRS232Data(short channelNum, short length ,unsigned char * pValue,unsigned int *pActualLength);
-    int recvRS232Data(short channelNum,short length, unsigned char * pValue, int *pActalLength,float *timeLab);
+    int recvRS232Data(short channelNum, short length, unsigned char * pValue, int *pActalLength, double *timeLab);
     ~ASL232();
 
     QByteArray translateToHex(QByteArray hexData);

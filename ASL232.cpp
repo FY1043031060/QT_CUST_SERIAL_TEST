@@ -3,6 +3,7 @@
 #include <QStringList>
 #include <QDebug>
 #include <QTime>
+#include "Helper.h"
 
 ASL232::ASL232(QString strDevice, ViSession viResourceRM, QWidget *parent)
     : QtResource(strDevice, viResourceRM, parent)
@@ -16,14 +17,14 @@ ASL232::ASL232(QString strDevice, ViSession viResourceRM, QWidget *parent)
 
 int ASL232::initRS232()
 {
-    int status = NT_H1040_Rs232Init(m_session);
+    int status = NT_H1040_Rs232Init(m_session, Helper::getInstance().getASL232RemoteType());
     qDebug() << __FUNCTION__ << status;
     return status;
 }
 
 int ASL232::uninitRS232()
 {
-    int status = NT_H1040_Rs232UnInit(m_session);
+    int status = NT_H1040_Rs232UnInit(m_session, Helper::getInstance().getASL232RemoteType());
     qDebug() << __FUNCTION__ << status;
     return status;
 }
@@ -42,7 +43,7 @@ int ASL232::sendRS232Data(short channel, short length, unsigned char *pValue, un
     return status;
 }
 
-int ASL232::recvRS232Data(short channel, short length, unsigned char *pValue,  int *pActalLength, float *timeLab)
+int ASL232::recvRS232Data(short channel, short length, unsigned char *pValue,  int *pActalLength, double *timeLab)
 {
     int status = NT_H1040_RS232_GetString(m_session, channel, length, pValue, pActalLength, timeLab) ;
     if(*pActalLength > 0)
@@ -58,7 +59,7 @@ ASL232::~ASL232()
 
 void ASL232::initCompoent()
 {
-    m_recvTiemr.start(0);
+    m_recvTiemr.start(100);
     QStringList arrChannel;
     for(int index = 0; index < 18; index ++)
     {
@@ -120,7 +121,7 @@ void ASL232::initCompoent()
         memset(arrTemp, 0, 1000);
 
         int iActLength = 0;
-        float ftimeLab = 0.0;
+        double ftimeLab = 0.0;
         recvRS232Data(channel, 1000, arrTemp, &iActLength, &ftimeLab);
 
         if(iActLength > 0)

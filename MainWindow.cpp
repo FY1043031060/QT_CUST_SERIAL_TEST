@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "visa.h"
 #include <QDebug>
+#include "Helper.h"
 
 static ViSession s_DefaultRM = NULL;
 MainWindow::MainWindow(QWidget *parent) :
@@ -85,16 +86,17 @@ int MainWindow::scanForResources()
     }
     return status;
 }
-
+#define _SERIAL_
 void MainWindow::createWid()
 {
+#ifdef _SERIAL_
     foreach(QString val, m_mapResourceAlias.keys())
     {
-        if(val.contains(QString("PXI55::11::INSTR")))//NOTE::232有变更
+        if(val.contains(Helper::getInstance().getASL232VisaDes()))//NOTE::232有变更
         {
             m_layout->addWidget(new ASL232(val,s_DefaultRM,this));
         }
-        else if(val.contains(QString("PXI25::11::INSTR")))//NOTE::422
+        else if(val.contains(Helper::getInstance().getASL422VisaDes()))//NOTE::422
         {
             m_layout->addWidget(new ASL422(val,s_DefaultRM,this));
         }
@@ -102,6 +104,9 @@ void MainWindow::createWid()
     }
 ////NOTE:: access CAN1 and CAN2 with RPC server.
 //    m_layout->addWidget(new CAN(this));
+#else
+//    m_layout->addWidget(new AR429(this));
+#endif
 }
 
 #include <QTimer>
@@ -141,7 +146,7 @@ void MainWindow::testConcurrence()
     connect(recvTimer,&QTimer::timeout,[&](){
         unsigned char arr[1000] = {0};
         int numAct = 0;
-        float timeLab = 0;
+        double timeLab = 0;
         for(int index = 0;index < 18;index++)
         {
             numAct = 0;

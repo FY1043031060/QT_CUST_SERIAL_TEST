@@ -26,7 +26,7 @@
 
 //==============================================================================
 // Types
-//ViSession devSession;
+ViSession devSession;
 
 
 #define DLL_API_EXPORT
@@ -41,6 +41,7 @@
 
 //==============================================================================
 // Global functions  
+/*
  typedef struct _RS422
 {
 
@@ -53,7 +54,7 @@
  int StopBit; 
 
 }RS422,*pRS422  ;
-
+   */
 typedef struct _RS232
 {
 
@@ -67,9 +68,20 @@ typedef struct _RS232
 }RS232,*pRS232  ;
 
 ViStatus _VI_FUNC  NT_H1040_RS232_ErrorInjection(ViSession vi,short funcTion,unsigned char EnableValue );
+ViStatus _VI_FUNC  NT_H1040_RS232_ChannelEnable(ViSession vi,short channel,unsigned char EnableValue ); 
+ViStatus _VI_FUNC  NT_H1040_RS232_DataFormatConfig(ViSession vi,short channel ,unsigned long baudrate,short wordlength,short parity,int stopBit); 
+ViStatus _VI_FUNC  NT_H1040_RS232_SendString(ViSession vi,short channel, short length ,unsigned char * pValue,unsigned int *pActualLength) ;
+ViStatus _VI_FUNC  NT_H1040_RS232_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength,double *timeLab) ;
+
+
+
+ViStatus _VI_FUNC NT_H1040_InitSession_232(ViRsrc resourceName, ViSession *vi);  
+ViStatus _VI_FUNC NT_H1040_Rs232Init(ViSession vi,int mode);
+ViStatus _VI_FUNC NT_H1040_Rs232UnInit(ViSession vi,int mode) ;
+
+/*
 ViStatus _VI_FUNC  NT_H1040_RS422_ErrorInjection(ViSession vi,short funcTion,unsigned char EnableValue );
 
-ViStatus _VI_FUNC  NT_H1040_RS232_ChannelEnable(ViSession vi,short channel,unsigned char EnableValue );  
 ViStatus _VI_FUNC  NT_H1040_RS422_ChannelEnable(ViSession vi,short channel,unsigned char EnableValue );
 ViStatus _VI_FUNC  NT_H1040_RS485_RelayConfig(ViSession vi,int channelStatus) ;  
 
@@ -78,26 +90,14 @@ ViStatus _VI_FUNC  NT_H1040_RS422_SendString(ViSession vi,short channel, short l
 ViStatus _VI_FUNC  NT_H1040_RS422_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength,float *timeLab) ;
 ViStatus _VI_FUNC  NT_H1040_RS422_DataFormatConfig(ViSession vi,short channel ,unsigned long baudrate,int wordlength,int parity,int stopBit); 
 
-
-ViStatus _VI_FUNC  NT_H1040_RS232_DataFormatConfig(ViSession vi,short channel ,unsigned long baudrate,short wordlength,short parity,int stopBit); 
-ViStatus _VI_FUNC  NT_H1040_RS232_SendString(ViSession vi,short channel, short length ,unsigned char * pValue,unsigned int *pActualLength) ;
-ViStatus _VI_FUNC  NT_H1040_RS232_GetString(ViSession vi,short channel, short length ,unsigned char * pValue,int *pActalLength,float *timeLab) ;
-
-
-ViStatus _VI_FUNC NT_H1040_GetID(ViSession vi);
-
-ViStatus _VI_FUNC NT_H1040_InitSession(ViRsrc resourceName, ViSession *vi);
-ViStatus _VI_FUNC NT_H1040_UnInitSession(ViSession vi) ;
-
 ViStatus _VI_FUNC NT_H1040_Rs422Init(ViSession vi);
 ViStatus _VI_FUNC NT_H1040_Rs422UnInit(ViSession vi) ;
-
-ViStatus _VI_FUNC NT_H1040_Rs232Init(ViSession vi);
- ViStatus _VI_FUNC NT_H1040_Rs232UnInit(ViSession vi) ;
-
-
- ViStatus _VI_FUNC NT_H1040_GetSofewareVer(ViSession vi, ViUInt32* piVersion);
- ViStatus _VI_FUNC NT_H1040_ReturnDescriptor(ViInt16 iSlotNum[], ViChar descriptor[][256], ViUInt32 *numFound,ViChar fpgaSoft[][256]) ;
+ViStatus _VI_FUNC NT_H1040_GetID(ViSession vi);
+ViStatus _VI_FUNC NT_H1040_UnInitSession(ViSession vi) ;
+ViStatus _VI_FUNC NT_H1040_GetSofewareVer(ViSession vi, ViUInt32* piVersion);
+*/
+//ViStatus _VI_FUNC NT_H1040_ReturnDescriptor(ViInt16 iSlotNum[], ViChar descriptor[][256], ViUInt32 *numFound,ViChar fpgaSoft[][256]) ; 
+//ViStatus _VI_FUNC NT_H1040_InitSession(ViRsrc resourceName, ViSession *vi);
 
 #ifdef __cplusplus
     }

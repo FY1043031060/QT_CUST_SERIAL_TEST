@@ -8,6 +8,7 @@
 #include "ASL422.h"
 #include <QMap>
 #include "CAN.h"
+#include "AR429.h"
 
 class MainWindow : public QMainWindow
 {
